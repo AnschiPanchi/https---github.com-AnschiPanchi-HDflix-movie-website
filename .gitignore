@@ -10,6 +10,7 @@ node_modules/
 # Environment variables
 .env
 backend/.env
+frontend/.env
 
 # Logs and system files
 *.log

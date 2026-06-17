@@ -7,6 +7,7 @@ import Search from './pages/Search';
 import Auth from './pages/Auth';
 import Watchlist from './pages/Watchlist';
 import './App.css';
+import { API_BASE_URL } from './config';
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -22,7 +23,7 @@ export default function App() {
       }
 
       try {
-        const res = await fetch('/api/auth/me', {
+        const res = await fetch(`${API_BASE_URL}/api/auth/me`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         const data = await res.json();

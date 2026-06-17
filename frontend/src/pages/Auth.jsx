@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Film, User, Mail, Lock, AlertCircle } from 'lucide-react';
 import './Auth.css';
+import { API_BASE_URL } from '../config';
 
 export default function Auth({ onLoginSuccess }) {
   const navigate = useNavigate();
@@ -19,8 +20,8 @@ export default function Auth({ onLoginSuccess }) {
     setLoading(true);
 
     const endpoint = mode === 'login' 
-      ? '/api/auth/login' 
-      : '/api/auth/register';
+      ? `${API_BASE_URL}/api/auth/login` 
+      : `${API_BASE_URL}/api/auth/register`;
 
     const body = mode === 'login'
       ? { email, password }

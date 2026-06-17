@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { Search as SearchIcon, Filter, Star, Play } from 'lucide-react';
 import './Search.css';
+import { API_BASE_URL } from '../config';
 
 export default function Search() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -28,11 +29,11 @@ export default function Search() {
         let endpoint = '';
         if (queryParam) {
           // Search query
-          endpoint = `/api/movies/search?query=${encodeURIComponent(queryParam)}`;
+          endpoint = `${API_BASE_URL}/api/movies/search?query=${encodeURIComponent(queryParam)}`;
         } else {
           // Category browsing
           const type = typeParam === 'all' ? 'movie' : typeParam;
-          endpoint = `/api/movies/${filterParam}?type=${type}`;
+          endpoint = `${API_BASE_URL}/api/movies/${filterParam}?type=${type}`;
         }
 
         const res = await fetch(endpoint);

@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Star, Play, Trash2, Calendar, Film } from 'lucide-react';
 import './Watchlist.css';
+import { API_BASE_URL } from '../config';
 
 export default function Watchlist({ user, onWatchlistUpdate }) {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ export default function Watchlist({ user, onWatchlistUpdate }) {
     e.stopPropagation();
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch(`/api/user/watchlist/${id}`, {
+      const res = await fetch(`${API_BASE_URL}/api/user/watchlist/${id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });

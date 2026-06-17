@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Star, Plus, Check, Play, Film, User, Layers } from 'lucide-react';
 import MovieSlider from '../components/MovieSlider';
 import './Detail.css';
+import { API_BASE_URL } from '../config';
 
 export default function Detail({ user, onWatchlistUpdate }) {
   const { type, id } = useParams();
@@ -26,13 +27,13 @@ export default function Detail({ user, onWatchlistUpdate }) {
       try {
         setLoading(true);
         // Get details
-        const detailsRes = await fetch(`/api/movies/${type}/${id}`);
+        const detailsRes = await fetch(`${API_BASE_URL}/api/movies/${type}/${id}`);
         if (!detailsRes.ok) throw new Error('Failed to fetch details');
         const detailsData = await detailsRes.json();
         setItem(detailsData);
 
         // Get recommendations
-        const recsRes = await fetch(`/api/movies/${type}/${id}/recommendations`);
+        const recsRes = await fetch(`${API_BASE_URL}/api/movies/${type}/${id}/recommendations`);
         const recsData = await recsRes.json();
         setRecommendations(recsData.results || []);
 
@@ -89,7 +90,7 @@ export default function Detail({ user, onWatchlistUpdate }) {
       const saveHistory = async () => {
         try {
           const token = localStorage.getItem('token');
-          await fetch('/api/user/history', {
+          await fetch(`${API_BASE_URL}/api/user/history`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -126,7 +127,7 @@ export default function Detail({ user, onWatchlistUpdate }) {
       const token = localStorage.getItem('token');
       if (inWatchlist) {
         // Remove
-        const res = await fetch(`/api/user/watchlist/${item.id}`, {
+        const res = await fetch(`${API_BASE_URL}/api/user/watchlist/${item.id}`, {
           method: 'DELETE',
           headers: { 'Authorization': `Bearer ${token}` }
         });
@@ -137,7 +138,7 @@ export default function Detail({ user, onWatchlistUpdate }) {
         }
       } else {
         // Add
-        const res = await fetch('/api/user/watchlist', {
+        const res = await fetch(`${API_BASE_URL}/api/user/watchlist`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

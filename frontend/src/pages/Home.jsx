@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Play, Info, Star, Plus, Check } from 'lucide-react';
 import MovieSlider from '../components/MovieSlider';
 import './Home.jsx.css';
+import { API_BASE_URL } from '../config';
 
 export default function Home({ user, onWatchlistUpdate }) {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ export default function Home({ user, onWatchlistUpdate }) {
       try {
         setLoading(true);
         // Get trending all
-        const trendingRes = await fetch('/api/movies/trending?type=all');
+        const trendingRes = await fetch(`${API_BASE_URL}/api/movies/trending?type=all`);
         const trendingData = await trendingRes.json();
         
         // Pick high quality hero movie (e.g. Pressure, or first result with backdrop)
@@ -33,22 +34,22 @@ export default function Home({ user, onWatchlistUpdate }) {
         }
 
         // Get trending movies
-        const moviesRes = await fetch('/api/movies/trending?type=movie');
+        const moviesRes = await fetch(`${API_BASE_URL}/api/movies/trending?type=movie`);
         const moviesData = await moviesRes.json();
         setTrendingMovies(moviesData.results || []);
 
         // Get trending tv
-        const tvRes = await fetch('/api/movies/trending?type=tv');
+        const tvRes = await fetch(`${API_BASE_URL}/api/movies/trending?type=tv`);
         const tvData = await tvRes.json();
         setTrendingTV(tvData.results || []);
 
         // Get top rated
-        const topRatedRes = await fetch('/api/movies/top_rated?type=movie');
+        const topRatedRes = await fetch(`${API_BASE_URL}/api/movies/top_rated?type=movie`);
         const topRatedData = await topRatedRes.json();
         setTopRated(topRatedData.results || []);
 
         // Get Only on Netflix (using TV shows as Netflix original representation)
-        const netflixRes = await fetch('/api/movies/popular?type=tv');
+        const netflixRes = await fetch(`${API_BASE_URL}/api/movies/popular?type=tv`);
         const netflixData = await netflixRes.json();
         setNetflixOriginals(netflixData.results || []);
 
@@ -80,7 +81,7 @@ export default function Home({ user, onWatchlistUpdate }) {
       const token = localStorage.getItem('token');
       if (inWatchlist) {
         // Remove
-        const res = await fetch(`/api/user/watchlist/${heroMovie.id}`, {
+        const res = await fetch(`${API_BASE_URL}/api/user/watchlist/${heroMovie.id}`, {
           method: 'DELETE',
           headers: { 'Authorization': `Bearer ${token}` }
         });
@@ -91,7 +92,7 @@ export default function Home({ user, onWatchlistUpdate }) {
         }
       } else {
         // Add
-        const res = await fetch('/api/user/watchlist', {
+        const res = await fetch(`${API_BASE_URL}/api/user/watchlist`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
