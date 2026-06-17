@@ -1,0 +1,172 @@
+.auth-page {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.auth-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle at center, rgba(6, 6, 8, 0.4) 0%, var(--bg-color) 70%), url('https://assets.nflxext.com/ffe/siteui/vlv3/5e13e173-a506-42c0-9f7e-9154a6a02b1c/5950e303-34e8-466d-9781-ca8c7df94770/IN-en-20240311-popsignuptwoweeks-perspective_alpha_website_medium.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  opacity: 0.25;
+}
+
+.auth-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 440px;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.auth-logo-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 30px;
+}
+
+.auth-logo-icon {
+  background-color: var(--accent-color);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.auth-logo-play {
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 9px solid white;
+  margin-left: 2px;
+}
+
+.auth-logo-text {
+  font-family: var(--font-title);
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.auth-title {
+  font-family: var(--font-title);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.auth-error-box {
+  background-color: rgba(229, 9, 20, 0.1);
+  border: 1px solid rgba(229, 9, 20, 0.2);
+  color: #fca5a5;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 20px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-field-group label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.auth-input-wrapper {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+}
+
+.auth-input-field {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 12px 14px 12px 42px;
+  font-size: 0.95rem;
+  color: white;
+  outline: none;
+  transition: var(--transition-smooth);
+}
+
+.auth-input-field:focus {
+  border-color: var(--accent-color);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.auth-submit-btn {
+  margin-top: 10px;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.auth-toggle-footer {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.auth-mode-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  transition: var(--transition-smooth);
+}
+
+.auth-mode-toggle:hover {
+  color: var(--accent-color);
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 24px;
+  }
+}

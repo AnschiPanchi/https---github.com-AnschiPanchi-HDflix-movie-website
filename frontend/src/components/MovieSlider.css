@@ -1,0 +1,214 @@
+.slider-section {
+  margin: 40px 0;
+  padding: 0 4%;
+  position: relative;
+}
+
+.slider-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.slider-title {
+  font-family: var(--font-title);
+  font-size: 1.6rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.slider-title::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 24px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+}
+
+.slider-subtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.slider-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.slider-control-btn {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: white;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.slider-control-btn:hover {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  transform: scale(1.1);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.slider-outer-wrapper {
+  overflow: visible;
+  position: relative;
+}
+
+.slider-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 0;
+  scrollbar-width: none; /* Firefox */
+}
+
+.slider-track::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.movie-card-wrapper {
+  flex: 0 0 auto;
+  position: relative;
+}
+
+/* Has number layout (Top 10 list) */
+.movie-card-wrapper.has-number {
+  display: flex;
+  align-items: flex-end;
+  width: 250px;
+}
+
+.card-number {
+  font-family: var(--font-title);
+  font-size: 6rem;
+  font-weight: 900;
+  line-height: 1;
+  color: #060608;
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.15);
+  position: absolute;
+  left: -10px;
+  bottom: -15px;
+  z-index: 1;
+  user-select: none;
+  transition: var(--transition-smooth);
+}
+
+.movie-card-wrapper:hover .card-number {
+  -webkit-text-stroke-color: var(--accent-color);
+}
+
+.movie-card {
+  position: relative;
+  width: 200px;
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: var(--card-bg);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  z-index: 2;
+}
+
+.movie-card-wrapper.has-number .movie-card {
+  margin-left: auto;
+}
+
+.movie-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background-color: var(--accent-color);
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
+}
+
+.card-play-btn:hover {
+  background-color: white;
+  color: var(--accent-color);
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.card-title {
+  font-family: var(--font-title);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-submeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.card-rating {
+  color: var(--rating-color);
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-weight: 600;
+}
+
+/* Hover effects */
+.movie-card-wrapper:hover .movie-card {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(229, 9, 20, 0.1);
+}
+
+.movie-card-wrapper:hover .movie-poster {
+  transform: scale(1.08);
+}
+
+.movie-card-wrapper:hover .card-overlay {
+  opacity: 1;
+}
