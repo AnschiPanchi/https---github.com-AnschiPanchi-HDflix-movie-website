@@ -16,7 +16,7 @@ export default function Detail({ user, onWatchlistUpdate }) {
   const [recommendations, setRecommendations] = useState([]);
   
   // TV specific state
-  const [selectedServer, setSelectedServer] = useState('vidking');
+  const [selectedServer, setSelectedServer] = useState('vidsrcto');
   const [selectedSeason, setSelectedSeason] = useState(1);
   const [selectedEpisode, setSelectedEpisode] = useState(1);
   const [episodesList, setEpisodesList] = useState([]);
@@ -185,11 +185,7 @@ export default function Detail({ user, onWatchlistUpdate }) {
 
   // Construct dynamic Embed URL based on server selection
   let embedUrl = '';
-  if (selectedServer === 'vidking') {
-    embedUrl = type === 'movie'
-      ? `https://www.vidking.net/embed/movie/${item.id}?color=e50914`
-      : `https://www.vidking.net/embed/tv/${item.id}/${selectedSeason}/${selectedEpisode}?color=e50914`;
-  } else if (selectedServer === 'vidsrcto') {
+  if (selectedServer === 'vidsrcto') {
     embedUrl = type === 'movie'
       ? `https://vidsrc.to/embed/movie/${item.id}`
       : `https://vidsrc.to/embed/tv/${item.id}/${selectedSeason}/${selectedEpisode}`;
